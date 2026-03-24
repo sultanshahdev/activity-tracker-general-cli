@@ -7,7 +7,7 @@ public class Activity
     LocalDate date;
     Duration duration;
 
-    public class Activity(String name,String location,LocalDate date, Duration duration)
+    public Activity(String name,String location,LocalDate date, Duration duration)
     {
         this.name= name;
         this.location=location;
