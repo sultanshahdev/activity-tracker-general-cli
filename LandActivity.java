@@ -1,5 +1,19 @@
-public class LandActivities extends Activity
+public class LandActivity extends Activity
 {
     int distance;
     int elevation;
+
+    public void LandActivity(String name,String location,LocalDate date, Duration duration, int distance,int elevation)
+    {
+        super(name,location,date,duration);
+        this.distance=distance;
+        this.elevation=elevation;
+    }
+
+    public String toString()
+    {
+        return super.toString() + " " + this.distance + " " + this.elevation;
+    }
+
+
 }
