@@ -3,7 +3,14 @@ public class QueryProcessor
 {
     Scanner scanner;
     String queryString;
-    List<Query> queryList
+    List<Object> queryList
+
+    public QueryProcessor()
+    {
+        this.scanner = null;
+        this.queryString="";
+        this.queryList= new List<Object>();
+    }
 
     public void processQuery(String queryString)
     {
@@ -25,24 +32,22 @@ public class QueryProcessor
             LocalTime endTime  =TotalTime.parse(scanner.next());
 
             generateBetweenTimeQuery(startTime,endTime);
-
-
         }
-        public void generateTypeQuery(String activityType)
-        {
-            this.queryList.add(new TypeQuery(activityType));
-        }
+    }
 
-        public void totalTimeQuery()
-        {
-            this.queryList.add(new totalTimeQuery());
-        }
+    public void generateTypeQuery(String activityType)
+    {
+        this.queryList.add(new TypeQuery(activityType));
+    }
 
-        public void betweenTimeQuery(LocalTime startTime,LocalTime endTime)
-        {
-            this.queryList.add(new betweenTimeQuery(startTime,endTime));
-        }
+    public void totalTimeQuery()
+    {
+        this.queryList.add(new totalTimeQuery());
+    }
 
+    public void betweenTimeQuery(LocalTime startTime,LocalTime endTime)
+    {
+        this.queryList.add(new betweenTimeQuery(startTime,endTime));
     }
 
 
