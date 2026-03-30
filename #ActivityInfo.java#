@@ -1,8 +1,0 @@
-class ActivityInfo
-{
-    String    name;
-    String    activity_name;
-    String    location;
-    Duration  duration;
-    LocalDate date;
-}

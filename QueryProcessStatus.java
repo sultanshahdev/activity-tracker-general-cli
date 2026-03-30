@@ -1,7 +1,7 @@
 public class QueryProcessStatus {
     public byte statusCode;
 
-    public QueryProcessStatus {
+    public QueryProcessStatus() {
         this.statusCode = 0;
     }
 
@@ -18,9 +18,9 @@ public class QueryProcessStatus {
         changeStausCode(0);
     }
 
-    public void checkStatusValidity(code) throws Exception {
+    public void checkStatusValidity(byte code) throws Exception {
         if (code != 0 || code != 1) {
-            throw new RuntimeException("invalid status code " + code"for query status");
+            throw new RuntimeException("invalid status code " + code + "for query status");
 
         }
         return;

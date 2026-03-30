@@ -10,16 +10,16 @@ public class GeneralActivity
     int laps;
     int lapsLength;
 
-    public GeneralActivity()
-    {
-        this.name='';
-        this.location='';
-        this.date=null;
-        this.duration=null;
-        this.elevation=0;
-        this.distance=0;
-        this.laps=0;
-        this.lapsLength=0;
+    public GeneralActivity() {
+        this.name = "";
+        this.location = "";
+        this.date = null;
+        this.duration = null;
+        this.elevation = 0;
+        this.distance = 0;
+        this.laps = 0;
+        this.lapsLength = 0;
+    }
 
     public String getName(){return this.name;}
     public String getLocation(){return this.location;}
@@ -32,8 +32,8 @@ public class GeneralActivity
 
     public void setName(String name){this.name=name;}
     public void setLocation(String location){this.location=location;}
-    public void setDate(LocalDate date){this.date=new Date(date);}
-    public void setDuration(duration duration){this.duration=new Duration(duration);}
+    public void setDate(LocalDate date){this.date=date;}
+    public void setDuration(Duration duration){this.duration=duration);}
     public void setElevation(int elevation){this.elevation=elevation;}
     public void setLaps(int laps){this.laps=laps;}
     public void setLapLength(int lapsLength){this.lapsLength=lapsLength;}

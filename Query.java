@@ -1,3 +1,4 @@
+import java.util.*;
 public class Query
 {
     ArrayList<ActivityInterface> activityList;

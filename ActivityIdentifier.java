@@ -1,24 +1,23 @@
 import java.util.Scanner;
-
+import java.time.*;
 
 public class ActivityIdentifier {
     Scanner scanner;
-    ActivityInterface currentActivity;
     String currentActivityType;
     GeneralActivity dummyActivity;
 
 
     public ActivityIdentifier() {
-        this.scaner = null;
-        dummyActivity = new dummyActivity();
+        this.scanner = null;
+        dummyActivity = new GeneralActivity();
     }
 
     public void generateActivityFromString(String activityString)
     {
         setActivityType(activityString);
-        generateTypOfeActivity();
+        generateTypeOfActivity();
     }
-    public ActivityInterface
+
     public void setActivityType(String activityString) {
         scanner = new Scanner(activityString);
         currentActivityType = scanner.next();
@@ -28,45 +27,38 @@ public class ActivityIdentifier {
         if (currentActivityType.equals("CYCLING")) {
             generateCyclingActivity();
         } else if (currentActivityType.equals("RUNNING")) {
-            genrateRunningActivity();
+            generateRunningActivity();
         } else if (currentActivityType.equals("WALKING")) {
-            generatWalkingActivity();
+            generateWalkingActivity();
         } else if (currentActivityType.equals("SWIMMING")) {
             generateSwimmingActivity();
         }
     }
 
-    public ActivityInterface generateCyclingActivity
+    public ActivityInterface generateCyclingActivity()
     {
-        this.dummyActivity=new DummyActivity();
+        this.dummyActivity=new GeneralActivity();
         setDataForLandActivity();
         return retriveCyclingActivity();
 
     }
-    public ActivityInterface generateCyclingActivity
+    public ActivityInterface generateWalkingActivity()
     {
-        this.dummyActivity=new DummyActivity();
-        setDataForLandActivity();
-        return retriveCyclingActivity();
-
-    }
-    public ActivityInterface generateWalkingActivity
-    {
-        this.dummyActivity=new DummyActivity();
+        this.dummyActivity=new GeneralActivity();
         setDataForLandActivity();
         return retriveWalkingActivity();
 
     }
-    public ActivityInterface generateRunningActivity
+    public ActivityInterface generateRunningActivity()
     {
-        this.dummyActivity=new DummyActivity();
+        this.dummyActivity=new GeneralActivity();
         setDataForLandActivity();
         return retriveRunningActivity();
 
     }
     public ActivityInterface generateSwimmingActivity()
     {
-        this.dummyActivity=new DummyActivity();
+        this.dummyActivity= new GeneralActivity();
         setDataForOffLandActivity();
         return retriveSwimmingActivity();
 
@@ -91,9 +83,10 @@ public class ActivityIdentifier {
         dummyActivity.setDistance(Integer.parseInt(scanner.next()));
         dummyActivity.setElevation(Integer.parseInt(scanner.next()));
     }
-    public ActivityInterface retriveCyclingActivity
+
+    public ActivityInterface retriveCyclingActivity()
     {
-        return new CyclingActivity
+        return new Cycling
                 (
                         dummyActivity.getName(),
                         dummyActivity.getLocation(),
@@ -103,9 +96,9 @@ public class ActivityIdentifier {
                         dummyActivity.getElevation()
                 );
     }
-    public ActivityInterface retriveCyclingActivity
+    public ActivityInterface retriveWalkingActivity()
     {
-        return new CyclingActivity
+        return new Walking
                 (
                         dummyActivity.getName(),
                         dummyActivity.getLocation(),
@@ -115,21 +108,9 @@ public class ActivityIdentifier {
                         dummyActivity.getElevation()
                 );
     }
-    public ActivityInterface retriveWalkingActivity
+    public ActivityInterface retriveRunningActivity()
     {
-        return new WalkingActivity
-                (
-                        dummyActivity.getName(),
-                        dummyActivity.getLocation(),
-                        dummyActivity.getDate(),
-                        dummyActivity.getDuration(),
-                        dummyActivity.getDistance(),
-                        dummyActivity.getElevation()
-                );
-    }
-    public ActivityInterface retriveRunningActivity
-    {
-        return new RunningActivity
+        return new Running
                 (
                         dummyActivity.getName(),
                         dummyActivity.getLocation(),
@@ -140,9 +121,9 @@ public class ActivityIdentifier {
                 );
     }
 
-    public ActivityInterface retriveSwimmingActivity
+    public ActivityInterface retriveSwimmingActivity()
     {
-        return new SwimmingActivity
+        return new Swimming
                 (
                         dummyActivity.getName(),
                         dummyActivity.getLocation(),

@@ -1,4 +1,5 @@
 import java.time.*;
+import java.util.*;
 public class TotalTimeQuery extends Query implements QueryInterface
 {
     Duration totalTime;
@@ -21,10 +22,10 @@ public class TotalTimeQuery extends Query implements QueryInterface
     }
     public void consoleOutMessageTotalTime()
     {
-        System.out.println(">>> Querying total activity time:\n')
+        System.out.println(">>> Querying total activity time");
     }
 
-    public void calculateTotalTime
+    public void calculateTotalTime()
 
     {
         resetIterator();
@@ -33,7 +34,7 @@ public class TotalTimeQuery extends Query implements QueryInterface
         }
     }
 
-    public void showQueryInfoOfAllActivities
+    public void showQueryInfoOfAllActivities()
 
     {
         resetIterator();
@@ -48,12 +49,12 @@ public class TotalTimeQuery extends Query implements QueryInterface
     {
         System.out.println
                 (
-                    '>>> ' + totalTime.toHoursPart()+ ' hours and ' + totalTime.toMinutesPart()+' minutes\n'
+                    ">>> " + totalTime.toHoursPart()+ " hours and " + totalTime.toMinutesPart()+" minutes"
                 )
     }
-    public void outputQueryMessage
+    public void outputQueryMessage()
     {
-        System.out.println('>>> Querying activities of type '+ activityType"\n" )
+        System.out.println(">>> Querying activities of type "+ activityType );
     }
     public void showActivities()
     {

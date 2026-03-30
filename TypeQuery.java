@@ -1,11 +1,13 @@
-public class TypeQuery extends Query implements QueryInterface
+import java.util.*;
+class TypeQuery extends Query implements QueryInterface
 {
 
-    public string activityType;
+    public String activityType;
 
-    public TypeQuery(ArrayList<ActivityInterface> activitylist)
+    public TypeQuery(ArrayList<ActivityInterface> activitylist,String activityType)
     {
         super(activitylist);
+        this.activityType=activityType;
     }
 
     public void performQuery()
@@ -13,14 +15,14 @@ public class TypeQuery extends Query implements QueryInterface
         outputQueryMessage();
         showActivities();
     }
-    public void outputQueryMessage
+    public void outputQueryMessage()
     {
-        System.out.println('>>> Querying activities of type '+ activityType"\n" )
+        System.out.println(">>> Querying activities of type "+ activityType );
     }
     public void showActivities()
     {
         super.resetIterator();
-        System.out.println("========== Activities ==========")
+        System.out.println("========== Activities ==========");
         while(super.iterator.hasNext())
         {
             if(super.iterator.next.ACTIVITY_TYPE.equals(this.activityType))
