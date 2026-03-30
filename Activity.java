@@ -21,7 +21,15 @@ public class Activity
         return this.name+" " + this.location + " "+ this.date + " " + this.duration;
     }
 
+    public void getDuration()
+    {
+        return this.duration;
 
+    }
+    public void getDate()
+    {
+        return this.date;
+    }
 
 
 

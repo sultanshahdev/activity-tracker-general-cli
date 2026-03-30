@@ -1,9 +1,20 @@
 public class Query
 {
-    Set<Object> activityList;
+    ArrayList<ActivityInterface> activityList;
+    QueryProcessStatus queryProcessStatus;
+    String queryOutput;
+    Iterator iterator;
 
-    public Query(Set<Object> activitylist)
+
+    public Query(ArrayList<ActivityInterface> activitylist)
+
     {
-        this.activityList=list;
+        this.activityList=activityList;
+        this.iterator = this.activityList.iterator();
     }
+    public void resetIterator() {
+        iterator = null;
+        this.iterator = this.activityList.iterator();
+    }
+
 }

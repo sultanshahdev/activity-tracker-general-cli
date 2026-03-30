@@ -3,6 +3,7 @@ public class LandActivity extends Activity
 {
     int distance;
     int elevation;
+    public String activityInfo;
 
     public LandActivity(String name,String location,LocalDate date, Duration duration, int distance,int elevation)
     {

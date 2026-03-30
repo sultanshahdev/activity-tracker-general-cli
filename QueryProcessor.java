@@ -2,14 +2,13 @@ import java.util.Scanner;
 public class QueryProcessor
 {
     Scanner scanner;
-    String queryString;
-    List<Object> queryList
+    ArrayList<ActivityInterface> activityList;
 
-    public QueryProcessor()
+
+    public QueryProcessor(ArrayList<AcitivityInterface> arrayList)
     {
+        this.activityList=activityList;
         this.scanner = null;
-        this.queryString="";
-        this.queryList= new List<Object>();
     }
 
     public void processQuery(String queryString)
@@ -19,11 +18,11 @@ public class QueryProcessor
         if(queryType.equals("ACTIVITY"))
         {
             String activityType = scanner.next();
-            generateTypeQuery(activityType);
+            generateTypeQuery(activityList,activityType);
         }
         else if(queryType.equals("TOTAL_TIME")
         {
-            generateTotalTimeQuery();
+            generateTotalTimeQuery(activityList);
         }
         else if(queryType.equals("BETWEEN"))
         {
@@ -31,23 +30,25 @@ public class QueryProcessor
             LocalTime startTime=TotalTime.parse(scanner.next());
             LocalTime endTime  =TotalTime.parse(scanner.next());
 
-            generateBetweenTimeQuery(startTime,endTime);
+            generateBetweenTimeQuery(activityList,startTime,endTime);
         }
+
     }
 
-    public void generateTypeQuery(String activityType)
+    public void generateTypeQuery(ArrayLis<ActivityInterface> activity,String activityType)
     {
-        this.queryList.add(new TypeQuery(activityType));
+        new TypeQuery(activityList,activityType));
     }
 
-    public void totalTimeQuery()
+    public void generateTotalTimeQuery(ArrayLis<ActivityInterface> activityList)
     {
-        this.queryList.add(new totalTimeQuery());
+        new TotalTimeQuery(activityList);
+
     }
 
-    public void betweenTimeQuery(LocalTime startTime,LocalTime endTime)
+    public void betweenTimeQuery(ArrayLis<ActivityInterface> activityList, LocalTime startTime,LocalTime endTime)
     {
-        this.queryList.add(new betweenTimeQuery(startTime,endTime));
+        new betweenTimeQuery(activityList,startTime,endTime);
     }
 
 
