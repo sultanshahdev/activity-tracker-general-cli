@@ -24,13 +24,13 @@ public class BetweenTimeQuery extends Query implements QueryInterface
     }
     public void outputQueryMessage()
     {
-        System.out.println(">>> Querying activities between " + startDate.toString() + " and " +endDate.toString() + ":" );
-        System.out.print(">>> Total activity time :" + totalTime.toHoursPart()+ " hours and " + totalTime.toMinutesPart()+" minutes");
+        System.out.println("\n>>> Querying activities between " + startDate.toString() + " and " +endDate.toString() + ":" );
+        System.out.println(">\n>> Total activity time :" + totalTime.toHoursPart()+ " hours and " + totalTime.toMinutesPart()+" minutes");
 
     }
     public void calculateTotalTime()
     {
-        totalTime=Duration.ZERO;
+        totalTime = Duration.ZERO;
         ActivityInterface currentActivity;
         super.resetIterator();
         {
@@ -39,7 +39,7 @@ public class BetweenTimeQuery extends Query implements QueryInterface
                 currentActivity=iterator.next();
                 if(currentActivity.getDate().isAfter(this.startDate) && currentActivity.getDate().isBefore(this.endDate))
                 {
-                    totalTime.plus(currentActivity.getDuration());
+                    totalTime=totalTime.plus(currentActivity.getDuration());
                 }
             }
         }
@@ -49,7 +49,7 @@ public class BetweenTimeQuery extends Query implements QueryInterface
     {
         ActivityInterface currentActivity=null;
         super.resetIterator();
-        System.out.println("========== Activities ==========");
+        System.out.println("\n========== Activities ==========");
         while(super.iterator.hasNext())
         {
             currentActivity=iterator.next();

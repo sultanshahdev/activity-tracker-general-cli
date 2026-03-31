@@ -17,11 +17,11 @@ public class Swimming extends OfflandActivity implements ActivityInterface
     {
         System.out.println
         (
-            "[" + super.date.toString() + "] "+ this.ACTIVITY_TYPE + ": " + super.name + " at" + super.location +"\n" +
-            "     "+" duration: "+ super.duration.toHoursPart()+" hour(s) and "+ super.duration.toMinutesPart() + " minute(s);\n" +
-            "     "+"laps: "+ super.laps+"km; \n"+
+            "\n[" + super.date.toString() + "] "+ this.ACTIVITY_TYPE + ": " + super.name + " at " + super.location +"\n\n" +
+            "     "+"duration:   "+ super.duration.toHoursPart()+" hour(s) and "+ super.duration.toMinutesPart() + " minute(s);\n" +
+            "     "+"laps:       "+ super.laps+"km; \n"+
             "     "+"lap length: "+ super.lapsLength+"m; \n"+
-            "     "+"pace: " + getPaceString() + " min/km"
+            "     "+"pace:       " + getPaceString() + " min/km"
         );
     }
     public void setDistance()

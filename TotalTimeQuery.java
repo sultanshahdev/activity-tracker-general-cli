@@ -23,15 +23,18 @@ public class TotalTimeQuery extends Query implements QueryInterface
     }
     public void consoleOutMessageTotalTime()
     {
-        System.out.println(">>> Querying total activity time");
+        System.out.println("\n>>> Querying total activity time:");
     }
 
     public void calculateTotalTime()
 
     {
+        ActivityInterface currentActivity;
         resetIterator();
         while (iterator.hasNext()) {
-            totalTime.plus(iterator.next().getDuration());
+            currentActivity=iterator.next();
+
+                totalTime=totalTime.plus(currentActivity.getDuration());
         }
     }
 
@@ -50,7 +53,7 @@ public class TotalTimeQuery extends Query implements QueryInterface
     {
         System.out.println
                 (
-                    ">>> " + totalTime.toHoursPart()+ " hours and " + totalTime.toMinutesPart()+" minutes"
+                    "\n>>> " + totalTime.toHoursPart()+ " hours and " + totalTime.toMinutesPart()+" minutes."
                 );
     }
     
@@ -62,7 +65,7 @@ public class TotalTimeQuery extends Query implements QueryInterface
         {
             
                 super.iterator.next().showActivityInfo();
-           
+            
         }
     }
 

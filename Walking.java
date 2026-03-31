@@ -16,11 +16,11 @@ public class Walking extends LandActivity implements ActivityInterface
     {
         System.out.println
         (
-            "["+super.date.toString()+"] "+ this.ACTIVITY_TYPE + ": "+ super.name + " at" + super.location +"\n" +
+            "\n["+super.date.toString()+"] "+ this.ACTIVITY_TYPE + ": "+ super.name + " at " + super.location +"\n\n" +
             "     "+"duration: "+ super.duration.toHoursPart()+" hour(s) and "+ super.duration.toMinutesPart() + " minute(s);\n" +
             "     "+"distance: "+ super.distance+"km; \n"+
-            "     "+"elev: "+ super.elevation+"m; \n"+
-            "     "+"pace:"+getPaceString()+" min/km"
+            "     "+"elev:     "+ super.elevation+"m; \n"+
+            "     "+"pace:     "+getPaceString()+" min/km"
         );
     }
     public void setPace()

@@ -18,11 +18,8 @@ public class ApplicationManager
         initializeInstanceVariables();
         loadFile();
         saveDataFromFile();
-        showDataFromFile();
         loadDataIntoActivityList();
         setUpQueryProcessor();
-        showAllActivitiesInfo();
-        promptForQuery();
         askUserForQuery();
     }
     public void initializeInstanceVariables()
@@ -64,11 +61,12 @@ public class ApplicationManager
         }
         catch (Exception e)
         {
-            System.out.println("file not found check for spelling and make sure file directory location!");
+            System.out.println("\nfile not found check for spelling and make sure file directory location!");
         }
     }
     public void saveDataFromFile()
     {
+        System.out.println("\nGoing to read [" + this.inputFileLocation + "].");
         while(inputFile.hasNextLine())
         {
             activityDataInString.add(inputFile.nextLine());
@@ -82,23 +80,15 @@ public class ApplicationManager
         while(iterator.hasNext())
         {
             currentActivity=activityIdentifier.generateActivityFromString(iterator.next());
+            System.out.println("\nAdding activity: ");
+            currentActivity.showActivityInfo();
             activityList.add(currentActivity);
+            System.out.println();
         }
     }
 
-   public void showAllActivitiesInfo()
-    {
-        listIterator= activityList.iterator();
-        while(listIterator.hasNext())
-        {
-            listIterator.next().showActivityInfo();
-        }
-        
-    }
-    public void promptForQuery()
-    {
-        System.out.println(">>> QUERY : (read the manual for instructions)");
-    }
+  
+    
 
     public void setUpQueryProcessor()
     {
@@ -111,6 +101,7 @@ public class ApplicationManager
         String textInput="";
         while(true)
         {
+
             textInput=inputMangager.inputForQuery();
             if(!textInput.equals("EXIT"))
             {

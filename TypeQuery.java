@@ -18,12 +18,12 @@ class TypeQuery extends Query implements QueryInterface
     }
     public void outputQueryMessage()
     {
-        System.out.println(">>> Querying activities of type "+ activityType );
+        System.out.println("\n>>> Querying activities of type "+ activityType );
     }
     public void showActivities()
     {
         
-        System.out.println("========== Activities ==========");
+        System.out.println("\n========== Activities ==========");
         ActivityInterface currentActivity;
         while(super.iterator.hasNext())
         {
