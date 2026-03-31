@@ -3,10 +3,10 @@ import java.time.*;
 public class QueryProcessor
 {
     Scanner scanner;
-    ArrayList<ActivityInterface> activityList;
+    List<ActivityInterface> activityList;
 
 
-    public QueryProcessor(ArrayList<ActivityInterface> arrayList)
+    public QueryProcessor(List<ActivityInterface> activityList)
     {
         this.activityList=activityList;
         this.scanner = null;
@@ -21,35 +21,35 @@ public class QueryProcessor
             String activityType = scanner.next();
             generateTypeQuery(activityList,activityType);
         }
-        else if(queryType.equals("TOTAL_TIME"))
+        else if(queryType.equals("TOTAL-TIME"))
         {
             generateTotalTimeQuery(activityList);
         }
         else if(queryType.equals("BETWEEN"))
         {
 
-            LocalTime startTime=LocalTime.parse(scanner.next());
-            LocalTime endTime  =LocalTime.parse(scanner.next());
+            LocalDate startDate=LocalDate.parse(scanner.next());
+            LocalDate endDate =LocalDate.parse(scanner.next());
 
-            generateBetweenTimeQuery(activityList,startTime,endTime);
+            generateBetweenTimeQuery(activityList,startDate,endDate);
         }
 
     }
 
-    public void generateTypeQuery(ArrayList<ActivityInterface> activity,String activityType)
+    public void generateTypeQuery(List<ActivityInterface> activity,String activityType)
     {
         new TypeQuery(activityList,activityType);
     }
 
-    public void generateTotalTimeQuery(ArrayList<ActivityInterface> activityList)
+    public void generateTotalTimeQuery(List<ActivityInterface> activityList)
     {
         new TotalTimeQuery(activityList);
 
     }
 
-    public void generateBetweenTimeQuery(ArrayList<ActivityInterface> activityList, LocalTime startTime,LocalTime endTime)
+    public void generateBetweenTimeQuery(List<ActivityInterface> activityList, LocalDate startDate,LocalDate endDate)
     {
-        new BetweenTimeQuery(activityList,startTime,endTime);
+        new BetweenTimeQuery(activityList,startDate,endDate);
     }
 
 

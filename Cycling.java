@@ -34,5 +34,17 @@ public class Cycling extends LandActivity implements ActivityInterface
         return String.valueOf(this.averageSpeed);
     }
 
+    public Duration getDuration()
+    {
+        return super.duration;
+    }
 
+     public String getActivityType()
+    {
+        return this.ACTIVITY_TYPE;
+    }
+    public LocalDate getDate()
+    {
+        return super.date;
+    }
 }

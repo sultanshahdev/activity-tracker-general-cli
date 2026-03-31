@@ -1,4 +1,3 @@
-import java.util.Scanner;
 import java.util.*;
 import java.nio.file.Files;
 import java.nio.file.Path;
@@ -6,19 +5,20 @@ public class ApplicationManager
 {
     Scanner inputFile;
     String inputFileLocation;
+    Iterator<ActivityInterface> listIterator;
     Set<String> activityDataInString;
-    List activityList;
+    List<ActivityInterface> activityList;
     InputManager inputMangager;
     QueryProcessor queryProcessor;
     ActivityIdentifier activityIdentifier;
-    Iterator iterator;
+    Iterator<String> iterator;
 
     public ApplicationManager()
     {
-
-        setUpQueryProcessor();
+        initializeInstanceVariables();
         loadFile();
         saveDataFromFile();
+        showDataFromFile();
         loadDataIntoActivityList();
         setUpQueryProcessor();
         showAllActivitiesInfo();
@@ -36,17 +36,31 @@ public class ApplicationManager
         inputMangager=new InputManager();
         activityIdentifier= new ActivityIdentifier();
     }
-
+    public void showDataFromFile()
+    {
+        iterator=activityDataInString.iterator();
+        while(iterator.hasNext())
+        {
+            System.out.println(iterator.next().toString());
+        }
+    }
     public void loadFile()
     {
         inputFileLocation  = inputMangager.askUserForInputFileLocation();
-        loadFileData(inputFileLocation);
+        try
+        {
+            loadFileData();
+        }
+        catch(Exception exception)
+        {
+            System.out.print(exception);
+        }
     }
-    public void loadFileData(String inputFileLocation) throws Exception
+    public void loadFileData() throws Exception
     {
         try
         {
-            inputFile = new Scanner(Files.newInputStream(Path.of(inputFileLocation)));
+            inputFile = new Scanner(Files.newInputStream(Path.of(this.inputFileLocation)));
         }
         catch (Exception e)
         {
@@ -74,11 +88,12 @@ public class ApplicationManager
 
    public void showAllActivitiesInfo()
     {
-        iterator= activityList.iterator();
-        while(iterator.hasNext())
+        listIterator= activityList.iterator();
+        while(listIterator.hasNext())
         {
-            iterator.next().showActivityInfo();
+            listIterator.next().showActivityInfo();
         }
+        
     }
     public void promptForQuery()
     {
@@ -87,17 +102,26 @@ public class ApplicationManager
 
     public void setUpQueryProcessor()
     {
-        queryProcessor = new QueryProcessor(activityList);
+        queryProcessor = new QueryProcessor(this.activityList);
     }
 
     public void askUserForQuery()
     {
-        String textInput=inputMangager.inputForQuery();
-        while(!(textInput.equals("exit")))
+        
+        String textInput="";
+        while(true)
         {
-            queryProcessor.processQuery(textInput);
-        }
-    }
+            textInput=inputMangager.inputForQuery();
+            if(!textInput.equals("EXIT"))
+            {
+                queryProcessor.processQuery(textInput);
+            }
+            else
+            {
+                break;
+            }
+        }   
+}
 
 
 

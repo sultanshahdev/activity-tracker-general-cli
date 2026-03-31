@@ -1,9 +1,10 @@
-public class OfflandActivity
+import java.time.*;
+public class OfflandActivity extends Activity
 {
     int laps;
     int lapsLength;
 
-    public OffandActivity(String name,String location,LocalDate date, Duration duration, int laps,int lapsLength)
+    public OfflandActivity (String name,String location,LocalDate date, Duration duration, int laps,int lapsLength)
     {
         super(name,location,date,duration);
         this.laps=laps;

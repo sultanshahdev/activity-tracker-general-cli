@@ -1,32 +1,55 @@
-import java.time.*;
+import java.time.Duration;
+import java.util.*;
+import java.time.LocalDate;
+
 public class BetweenTimeQuery extends Query implements QueryInterface
 {
     public LocalDate startDate;
     public LocalDate endDate;
     public Duration totalTime;
 
-    public BetweenTimeQuery(ArrayList<ActivityInterface> activitylist)
+    public BetweenTimeQuery(List<ActivityInterface> activitylist,LocalDate startDate,LocalDate endDate)
     {
         super(activitylist);
+        this.startDate=startDate;
+        this.endDate=endDate;
+        performQuery();
     }
 
     public void performQuery()
     {
+        calculateTotalTime();
         outputQueryMessage();
         showActivities();
     }
-    public void outputQueryMessage
+    public void outputQueryMessage()
     {
-        System.out.println('>>> Querying activities between '+ startDate.toString + ' and + 'endDate.toString()':' );
-        System.out.print('>>> Total activity time :' + totalTime.toHoursPart()+ ' hours and ' + totalTime.toMinutesPart()+' minutes');
+        System.out.println(">>> Querying activities between " + startDate.toString() + " and " +endDate.toString() + ":" );
+        System.out.print(">>> Total activity time :" + totalTime.toHoursPart()+ " hours and " + totalTime.toMinutesPart()+" minutes");
+
+    }
+    public void calculateTotalTime()
+    {
+        totalTime=Duration.ZERO;
+        ActivityInterface currentActivity;
+        super.resetIterator();
+        {
+            while(super.iterator.hasNext())
+            {
+                currentActivity=iterator.next();
+                if(currentActivity.getDate().isAfter(this.startDate) && currentActivity.getDate().isBefore(this.endDate))
+                {
+                    totalTime.plus(currentActivity.getDuration());
+                }
+            }
+        }
 
     }
     public void showActivities()
     {
         ActivityInterface currentActivity=null;
         super.resetIterator();
-        ActivityInterface currentActivity;
-        System.out.println("========== Activities ==========")
+        System.out.println("========== Activities ==========");
         while(super.iterator.hasNext())
         {
             currentActivity=iterator.next();

@@ -29,5 +29,17 @@ public class Running extends LandActivity implements ActivityInterface
     {
     return String.valueOf(pace);
     }
+    public Duration getDuration()
+    {
+        return super.duration;
+    }
 
+    public String getActivityType()
+    {
+        return this.ACTIVITY_TYPE;
+    }
+    public LocalDate getDate()
+    {
+        return super.date;
+    }
 }

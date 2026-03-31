@@ -4,10 +4,11 @@ class TypeQuery extends Query implements QueryInterface
 
     public String activityType;
 
-    public TypeQuery(ArrayList<ActivityInterface> activitylist,String activityType)
+    public TypeQuery(List<ActivityInterface> activitylist,String activityType)
     {
         super(activitylist);
         this.activityType=activityType;
+        performQuery();
     }
 
     public void performQuery()
@@ -21,13 +22,15 @@ class TypeQuery extends Query implements QueryInterface
     }
     public void showActivities()
     {
-        super.resetIterator();
+        
         System.out.println("========== Activities ==========");
+        ActivityInterface currentActivity;
         while(super.iterator.hasNext())
         {
-            if(super.iterator.next.ACTIVITY_TYPE.equals(this.activityType))
+            currentActivity=iterator.next();
+            if(currentActivity.getActivityType().equals(this.activityType))
             {
-                super.iterator.showActivityInfo();
+                currentActivity.showActivityInfo();
             }
         }
     }

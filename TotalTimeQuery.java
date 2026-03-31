@@ -5,14 +5,15 @@ public class TotalTimeQuery extends Query implements QueryInterface
     Duration totalTime;
 
 
-    public TotalTimeQuery(ArrayList<ActivityInterface> activitylist)
+    public TotalTimeQuery(List<ActivityInterface> activitylist)
     {
         super(activitylist);
-        totalTime = new Duration(Duration.ZERO);
+        totalTime = Duration.ZERO;
+        performQuery();
 
     }
 
-    public void proccessQuery
+    public void performQuery()
 
     {
         consoleOutMessageTotalTime();
@@ -30,7 +31,7 @@ public class TotalTimeQuery extends Query implements QueryInterface
     {
         resetIterator();
         while (iterator.hasNext()) {
-            totalTime.plus(iterator.next.getDuration());
+            totalTime.plus(iterator.next().getDuration());
         }
     }
 
@@ -39,7 +40,7 @@ public class TotalTimeQuery extends Query implements QueryInterface
     {
         resetIterator();
         while (iterator.hasNext()) {
-            iterator.showActivityInfo();
+            iterator.next().showActivityInfo();
         }
     }
 
@@ -50,22 +51,18 @@ public class TotalTimeQuery extends Query implements QueryInterface
         System.out.println
                 (
                     ">>> " + totalTime.toHoursPart()+ " hours and " + totalTime.toMinutesPart()+" minutes"
-                )
+                );
     }
-    public void outputQueryMessage()
-    {
-        System.out.println(">>> Querying activities of type "+ activityType );
-    }
+    
     public void showActivities()
     {
         super.resetIterator();
-        System.out.println("========== Activities ==========")
+        System.out.println("========== Activities ==========");
         while(super.iterator.hasNext())
         {
-            if(super.iterator.next.ACTIVITY_TYPE.equals(this.activityType))
-            {
-                super.iterator.showActivityInfo();
-            }
+            
+                super.iterator.next().showActivityInfo();
+           
         }
     }
 

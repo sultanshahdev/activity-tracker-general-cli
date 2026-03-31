@@ -12,10 +12,10 @@ public class ActivityIdentifier {
         dummyActivity = new GeneralActivity();
     }
 
-    public void generateActivityFromString(String activityString)
+    public ActivityInterface generateActivityFromString(String activityString)
     {
         setActivityType(activityString);
-        generateTypeOfActivity();
+        return generateTypeOfActivity();
     }
 
     public void setActivityType(String activityString) {
@@ -23,16 +23,19 @@ public class ActivityIdentifier {
         currentActivityType = scanner.next();
     }
 
-    public void generateTypeOfActivity() {
+    public ActivityInterface generateTypeOfActivity() {
         if (currentActivityType.equals("CYCLING")) {
-            generateCyclingActivity();
+            return generateCyclingActivity();
         } else if (currentActivityType.equals("RUNNING")) {
-            generateRunningActivity();
+            return generateRunningActivity();
         } else if (currentActivityType.equals("WALKING")) {
-            generateWalkingActivity();
-        } else if (currentActivityType.equals("SWIMMING")) {
-            generateSwimmingActivity();
+            return generateWalkingActivity();
+        } else if(currentActivityType.equals("SWIMMING")) {
+            return generateSwimmingActivity();
         }
+        return new Cycling(null, null, null, null, 0, 0);
+       
+
     }
 
     public ActivityInterface generateCyclingActivity()
@@ -133,15 +136,4 @@ public class ActivityIdentifier {
                         dummyActivity.getLapLength()
                 );
     }
-
-
-
-
-
-
-
-
-
-
-
 }

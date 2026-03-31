@@ -1,6 +1,6 @@
 public interface QueryInterface
 {
-    public void processQuery();
+    public void performQuery();
 
 
 }

@@ -33,7 +33,7 @@ public class GeneralActivity
     public void setName(String name){this.name=name;}
     public void setLocation(String location){this.location=location;}
     public void setDate(LocalDate date){this.date=date;}
-    public void setDuration(Duration duration){this.duration=duration);}
+    public void setDuration(Duration duration){this.duration=duration;}
     public void setElevation(int elevation){this.elevation=elevation;}
     public void setLaps(int laps){this.laps=laps;}
     public void setLapLength(int lapsLength){this.lapsLength=lapsLength;}
