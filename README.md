@@ -116,7 +116,7 @@ No environment variables are required.
 ### Run locally
 
 > **Assumption:** `ActivityTracker` is the intended runnable CLI entry point.  
-> Note: `make compile` currently compiles all `*.java` and may fail due to unrelated non-runnable files in this repository. The command below compiles the runnable CLI set directly.
+> Note: `make compile` runs `javac *.java`, which includes files currently present in the repository that contain incomplete/invalid Java code (for example, `ActivityQuery.java` and `Swiming.java`). Use the command below to compile the confirmed runnable CLI sources.
 
 ```bash
 javac ActivityTracker.java ApplicationManager.java InputManager.java QueryProcessor.java Query.java QueryInterface.java TotalTimeQuery.java BetweenTimeQuery.java TypeQuery.java ActivityIdentifier.java GeneralActivity.java ActivityInterface.java Activity.java LandActivity.java OfflandActivity.java Cycling.java Running.java Walking.java Swimming.java
@@ -160,7 +160,7 @@ EXIT
 
 ## 🧪 Testing
 
-Automated tests are **not applicable** (no test suite is present in this repository).
+No automated test suite is currently available in this repository.
 
 Basic smoke check:
 
@@ -216,4 +216,3 @@ If you maintain this repository, add a `LICENSE` file to define usage and contri
 - 🍴 Fork it to extend functionality
 - 🐛 Open an issue for bugs or suggestions
 - 💬 Use pull requests for improvements
-
